@@ -14,3 +14,16 @@ services:
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+
+  node:
+    container_name: node
+    build: ./docker/node
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./server/:/app:delegated
+#    ports:
+#      - 8080:3000
+#      - 8082:3002
+#      - 8084:4000
